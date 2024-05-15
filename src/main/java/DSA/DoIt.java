@@ -1,4 +1,4 @@
-package com.kafka.kafkaDemoProj.Model;
+package DSA;
 
 public class DoIt {
 

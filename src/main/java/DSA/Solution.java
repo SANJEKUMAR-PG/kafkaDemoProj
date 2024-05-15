@@ -1,4 +1,4 @@
-package com.kafka.kafkaDemoProj.Service;
+package DSA;
 
 class Solution {
     public boolean canJump(int[] nums) {

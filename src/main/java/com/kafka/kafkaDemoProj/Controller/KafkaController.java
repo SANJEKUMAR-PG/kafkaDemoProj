@@ -1,14 +1,14 @@
 
 package com.kafka.kafkaDemoProj.Controller;
+
 import com.kafka.kafkaDemoProj.Repo.UserRepository;
-import com.kafka.kafkaDemoProj.Service.Consumer;
-import com.kafka.kafkaDemoProj.Service.Producer;
+import com.kafka.kafkaDemoProj.Service.ConsumerService;
+import com.kafka.kafkaDemoProj.Service.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.kafka.kafkaDemoProj.Model.*;
-
 
 
 @RestController
@@ -18,51 +18,38 @@ import com.kafka.kafkaDemoProj.Model.*;
 public class KafkaController {
 
     @Autowired
-    private Producer producer;
+    private ProducerService producer;
 
     @Autowired
-    private Consumer consumer;
+    private ConsumerService consumer;
 
 
     @Autowired
     private UserRepository userRepository;
 
 
-/*
-@GetMapping("/produce")
+    @GetMapping("/produce")
     public void sendMessageToKafka(@RequestParam(value = "message") String message) {
         producer.sendMessage(message);
     }
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-        public void sendUserToKafka(@RequestParam(value = "iAge",defaultValue = "0")int iAge) {
+    public void sendUserToKafka(@RequestParam(value = "iAge", defaultValue = "0") int iAge) {
         producer.sendUserToKafka(iAge);
     }
-
-
-
-
-
-
-
-
 
     @GetMapping("receive/messages/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void getMessages(@PathVariable int id, String message) {
-        consumer.getMessages(id,message);
+        consumer.getMessages(id, message);
     }
 
-
-*/
-
-
-   /* @PostMapping("user")
-    public User sendUser(@RequestBody User input){
-      producer.sendUser(input);
-      return input;
-    }*/
+    @PostMapping("user")
+    public User sendUser(@RequestBody User input) {
+        producer.sendUser(input);
+        return input;
+    }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)

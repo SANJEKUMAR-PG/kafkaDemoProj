@@ -1,4 +1,4 @@
-package com.kafka.kafkaDemoProj.Service;
+package DSA;
 
 import java.util.Scanner;
 
